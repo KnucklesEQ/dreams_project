@@ -1,7 +1,9 @@
 package yo.knuckleseq;
 
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Hola Mundo");
+        var exitCode = new SonologCli(args).run(System.out, System.err);
+        System.exit(exitCode);
     }
 }
