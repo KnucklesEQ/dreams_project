@@ -1,5 +1,6 @@
 package yo.knuckleseq.flow;
 
+import yo.knuckleseq.support.BuildMetadataTestSupport;
 import yo.knuckleseq.support.MainCommandLineTestSupport;
 
 import java.nio.file.Files;
@@ -43,15 +44,17 @@ class DisplayApplicationVersionTest {
     @Test
     void givenResolvedVersionRequestWhenRenderingOutputThenItDisplaysTheApplicationName() throws Exception {
         var result = MainCommandLineTestSupport.runMain("version");
+        var metadata = BuildMetadataTestSupport.load();
 
-        assertTrue(result.stdout().contains("Sonolog"));
+        assertTrue(result.stdout().contains(metadata.displayName()));
     }
 
     @Test
     void givenResolvedVersionRequestWhenRenderingOutputThenItDisplaysTheApplicationVersion() throws Exception {
         var result = MainCommandLineTestSupport.runMain("version");
+        var metadata = BuildMetadataTestSupport.load();
 
-        assertTrue(result.stdout().contains("0.0.1"));
+        assertTrue(result.stdout().contains(metadata.version()));
     }
 
     @Test

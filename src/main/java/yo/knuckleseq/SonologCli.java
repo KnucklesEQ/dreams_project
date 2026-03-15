@@ -10,9 +10,15 @@ final class SonologCli {
     private final ScanCommand scanCommand = new ScanCommand();
     private final StatusCommand statusCommand = new StatusCommand();
     private final List<String> arguments;
+    private final ApplicationMetadata metadata;
 
     SonologCli(String[] arguments) {
+        this(arguments, ApplicationMetadata.load());
+    }
+
+    SonologCli(String[] arguments, ApplicationMetadata metadata) {
         this.arguments = List.of(arguments.clone());
+        this.metadata = metadata;
     }
 
     int run(PrintStream stdout, PrintStream stderr) {
@@ -30,7 +36,7 @@ final class SonologCli {
         var commandArguments = arguments.subList(1, arguments.size());
 
         return switch (command) {
-            case "version", "--version" -> resolveStandaloneCommand(CliTexts.VERSION_OUTPUT, CliTexts.VERSION_USAGE, commandArguments);
+            case "version", "--version" -> resolveStandaloneCommand(CliTexts.versionOutput(metadata), CliTexts.VERSION_USAGE, commandArguments);
             case "help", "--help" -> resolveHelpCommand(commandArguments);
             case "init" -> appHomeInitializer.execute(commandArguments);
             case "doctor" -> doctorCommand.execute(commandArguments);
@@ -50,7 +56,7 @@ final class SonologCli {
 
     private CommandResult resolveHelpCommand(List<String> commandArguments) {
         if (commandArguments.isEmpty()) {
-            return CommandResult.success(CliTexts.GENERAL_HELP_OUTPUT);
+            return CommandResult.success(CliTexts.generalHelpOutput(metadata));
         }
 
         if (commandArguments.size() == 1) {

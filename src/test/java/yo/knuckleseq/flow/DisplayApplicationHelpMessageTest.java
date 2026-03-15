@@ -1,5 +1,6 @@
 package yo.knuckleseq.flow;
 
+import yo.knuckleseq.support.BuildMetadataTestSupport;
 import yo.knuckleseq.support.MainCommandLineTestSupport;
 
 import java.nio.file.Files;
@@ -35,8 +36,10 @@ class DisplayApplicationHelpMessageTest {
     @Test
     void givenResolvedGeneralHelpRequestWhenRenderingOutputThenItDisplaysTheTopLevelCommandOverview() throws Exception {
         var result = MainCommandLineTestSupport.runMain("help");
+        var metadata = BuildMetadataTestSupport.load();
 
         assertAll(
+            () -> assertTrue(result.stdout().contains(metadata.displayName())),
             () -> assertTrue(result.stdout().contains("init")),
             () -> assertTrue(result.stdout().contains("process")),
             () -> assertTrue(result.stdout().contains("status"))

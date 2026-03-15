@@ -1,5 +1,6 @@
 package yo.knuckleseq.e2e;
 
+import yo.knuckleseq.support.BuildMetadataTestSupport;
 import yo.knuckleseq.support.MainCommandLineTestSupport;
 
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,11 @@ class DisplayApplicationHelpMessageEndToEndTest {
     @Test
     void givenGeneralHelpRequestWhenRunningTheApplicationEndToEndThenItPrintsTheGeneralHelpContract() throws Exception {
         var result = MainCommandLineTestSupport.runMain("help");
+        var metadata = BuildMetadataTestSupport.load();
 
         assertAll(
             () -> assertEquals(0, result.exitCode()),
+            () -> assertTrue(result.stdout().contains(metadata.displayName())),
             () -> assertTrue(result.stdout().contains("init")),
             () -> assertTrue(result.stdout().contains("process")),
             () -> assertTrue(result.stdout().contains("--config")),

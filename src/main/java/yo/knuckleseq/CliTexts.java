@@ -2,9 +2,6 @@ package yo.knuckleseq;
 
 final class CliTexts {
 
-    static final String APP_NAME = "Sonolog";
-    static final String APP_VERSION = "0.0.1";
-    static final String VERSION_OUTPUT = APP_NAME + " " + APP_VERSION + "\n";
     static final String VERSION_USAGE = "Uso: sonolog version\n";
     static final String HELP_USAGE = "Uso: sonolog help [command]\nPrueba \"sonolog help\" para ver los comandos disponibles\n";
     static final String GENERAL_USAGE = "Uso: sonolog <command>\nPrueba \"sonolog help\" para ver los comandos disponibles\n";
@@ -14,8 +11,13 @@ final class CliTexts {
     static final String DOCTOR_USAGE = "Uso: sonolog doctor [--online] [--config <path>]\n";
     static final String SCAN_USAGE = "Uso: sonolog scan [--config <path>]\n";
     static final String STATUS_USAGE = "Uso: sonolog status [<dreamId>] [--failed] [--protected] [--config <path>]\n";
-    static final String GENERAL_HELP_OUTPUT = """
-Sonolog - Diario de suenos en CLI
+    static String versionOutput(ApplicationMetadata metadata) {
+        return metadata.displayName() + " " + metadata.version() + "\n";
+    }
+
+    static String generalHelpOutput(ApplicationMetadata metadata) {
+        return """
+%s - Diario de suenos en CLI
 Comandos principales:
   init
   doctor
@@ -37,7 +39,9 @@ Flags globales:
 Ejemplos:
   sonolog help
   sonolog process
-""";
+""".formatted(metadata.displayName());
+    }
+
     static final String PROCESS_HELP_OUTPUT = """
 Uso: sonolog process [<dreamId|path>]
 
