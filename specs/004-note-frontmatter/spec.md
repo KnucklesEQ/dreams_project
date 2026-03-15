@@ -285,6 +285,6 @@ Notes:
 - Prefer a template-based renderer over ad hoc string concatenation.
 
 ## Status
-- This spec refines `docs/spec-v0.1.md`.
-- This spec should be read together with `docs/config-manifest-spec-v0.1.md` and `docs/analysis-run-spec-v0.1.md`.
+- This spec refines `specs/001-sonolog-foundation/spec.md`.
+- This spec should be read together with `specs/002-config-manifest/spec.md` and `specs/003-analysis-run/spec.md`.
 - If there is a conflict specific to `note.md`, this file is authoritative.

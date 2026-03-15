@@ -287,10 +287,10 @@ Reglas:
 - A later rerun should resume from the earliest failed or stale stage.
 
 ## Relationship with other specs
-- `docs/config-manifest-spec-v0.1.md` defines canonical machine state.
-- `docs/analysis-run-spec-v0.1.md` defines `analysis.json` and `run.json`.
-- `docs/note-spec-v0.1.md` defines final note rendering and overwrite protection.
+- `specs/002-config-manifest/spec.md` defines canonical machine state.
+- `specs/003-analysis-run/spec.md` defines `analysis.json` and `run.json`.
+- `specs/004-note-frontmatter/spec.md` defines final note rendering and overwrite protection.
 
 ## Status
-- This spec refines `docs/spec-v0.1.md`.
+- This spec refines `specs/001-sonolog-foundation/spec.md`.
 - If there is a conflict specific to stage prompts or stage I/O contracts, this file is authoritative.

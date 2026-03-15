@@ -261,10 +261,10 @@ sonolog build-note 2026-03-14_001 --force
 ```
 
 ## Relationship with other specs
-- `docs/prompt-stage-spec-v0.1.md` defines prompt strategy and stage I/O contracts.
-- `docs/config-manifest-spec-v0.1.md` defines canonical machine state.
-- `docs/note-spec-v0.1.md` defines note overwrite protection.
+- `specs/005-prompt-stage-contracts/spec.md` defines prompt strategy and stage I/O contracts.
+- `specs/002-config-manifest/spec.md` defines canonical machine state.
+- `specs/004-note-frontmatter/spec.md` defines note overwrite protection.
 
 ## Status
-- This spec refines `docs/spec-v0.1.md`.
+- This spec refines `specs/001-sonolog-foundation/spec.md`.
 - If there is a conflict specific to CLI semantics, flags or exit codes, this file is authoritative.

@@ -60,7 +60,7 @@ Construir una herramienta personal para Debian Linux que convierta audios de sue
 Resumen:
 - `config.json` debe ser pequeno, humano y declarativo.
 - `manifest.json` debe ser canonico por audio y escrito por la app.
-- Contrato detallado: `docs/config-manifest-spec-v0.1.md`.
+- Contrato detallado: `specs/002-config-manifest/spec.md`.
 
 Config de referencia:
 
@@ -105,8 +105,8 @@ Notas:
 - `archiveDir` es la ubicacion canonica del audio original una vez importado.
 - `workspaceDir` guarda artefactos tecnicos y no tiene por que estar dentro del vault de Obsidian.
 - `promptSet` identifica el bundle de prompts, no el prompt literal.
-- La forma detallada de `manifest.json` vive en `docs/config-manifest-spec-v0.1.md`.
-- Contrato detallado de prompts y etapas: `docs/prompt-stage-spec-v0.1.md`.
+- La forma detallada de `manifest.json` vive en `specs/002-config-manifest/spec.md`.
+- Contrato detallado de prompts y etapas: `specs/005-prompt-stage-contracts/spec.md`.
 
 ## Layout recomendado
 ```text
@@ -148,15 +148,15 @@ workspace/<dreamId>/
 
 Nota final:
 - `notes/<dreamId>.md`
-- Contrato detallado de `analysis.json` y `run.json`: `docs/analysis-run-spec-v0.1.md`.
-- Contrato detallado de la nota: `docs/note-spec-v0.1.md`.
+- Contrato detallado de `analysis.json` y `run.json`: `specs/003-analysis-run/spec.md`.
+- Contrato detallado de la nota: `specs/004-note-frontmatter/spec.md`.
 
 ## Registro de ejecuciones
 - `workspace/<dreamId>/manifest.json` guarda el estado canonico de un audio.
 - `runs/<runId>/run.json` guarda el contexto de una ejecucion concreta del CLI.
 - `run.json` es util para lotes, errores parciales, reintentos, tiempos y resumen final.
 - Debe incluir al menos `runId`, inicio/fin, config efectiva, lista de `dreamId`, etapas ejecutadas y errores.
-- Contrato detallado: `docs/analysis-run-spec-v0.1.md`.
+- Contrato detallado: `specs/003-analysis-run/spec.md`.
 
 ## Pipeline
 Pipeline logico:
@@ -177,7 +177,7 @@ Reglas:
 ## Modelo de la nota Markdown
 Resumen:
 - `note.md` es un artefacto derivado, orientado a Obsidian.
-- Contrato detallado: `docs/note-spec-v0.1.md`.
+- Contrato detallado: `specs/004-note-frontmatter/spec.md`.
 - Titulo final con formato `Sue\u00f1o YYYY_MM_DD(<ordinal romano>) - <titulo>`; los ejemplos del repo usan `Sueno` por consistencia ASCII.
 - La nota debe conservar `Version depurada` y `Transcripcion cruda`.
 - Si la nota fue editada fuera de Sonolog, no debe sobrescribirse sin `--force`.
@@ -268,7 +268,7 @@ Cuerpo de referencia:
 - Guardar respuestas raw de API siempre que sea posible.
 - El analisis debe basarse solo en texto existente.
 - Marcar para revision manual cualquier entidad claramente nueva respecto al texto fuente.
-- Contrato detallado de prompts e I/O por etapa: `docs/prompt-stage-spec-v0.1.md`.
+- Contrato detallado de prompts e I/O por etapa: `specs/005-prompt-stage-contracts/spec.md`.
 
 ## CLI prevista
 - `sonolog init`
@@ -280,7 +280,7 @@ Cuerpo de referencia:
 - `sonolog build-note <dreamId>`
 - `sonolog status <dreamId>`
 - `sonolog doctor`
-- UX CLI detallada: `docs/cli-ux-spec-v0.1.md`.
+- UX CLI detallada: `specs/006-cli-ux/spec.md`.
 
 ## Stack recomendado
 - Java 21 LTS.
@@ -303,14 +303,8 @@ Cuerpo de referencia:
 - Funciona en Debian Linux.
 - La revision manual se hace despues en Obsidian.
 
-## Fases sugeridas
-1. Skeleton Java + Gradle + CLI + config.
-2. Layout de carpetas + manifests + hashing.
-3. Integracion STT con OpenAI.
-4. Limpieza y estructuracion con LLM.
-5. Analisis estructurado.
-6. Export Markdown.
-7. Tests, logs, reintentos y control de rate limits.
+## Plan
+- Plan de implementacion: `specs/001-sonolog-foundation/plan.md`.
 
 ## Estado actual
 - Esta especificacion recoge las decisiones ya tomadas en la conversacion actual.

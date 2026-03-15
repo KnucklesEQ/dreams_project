@@ -17,7 +17,7 @@ This document is intended to be usable by future sessions or other models withou
 - Defines the runtime contract for `config.json`.
 - Defines the per-audio state contract for `manifest.json`.
 - Clarifies how both relate to `run.json`.
-- Detailed `analysis.json` and `run.json` contracts live in `docs/analysis-run-spec-v0.1.md`.
+- Detailed `analysis.json` and `run.json` contracts live in `specs/003-analysis-run/spec.md`.
 
 ## Core rules
 - `config.json` is human-edited and should stay small.
@@ -426,6 +426,6 @@ Recommended supporting objects:
 - Use deterministic serialization order for easier diffs.
 
 ## Status
-- This spec refines `docs/spec-v0.1.md`.
-- This spec should be read together with `docs/analysis-run-spec-v0.1.md`.
+- This spec refines `specs/001-sonolog-foundation/spec.md`.
+- This spec should be read together with `specs/003-analysis-run/spec.md`.
 - If both docs disagree, this file is authoritative for `config.json` and `manifest.json`.

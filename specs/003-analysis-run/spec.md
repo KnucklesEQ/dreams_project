@@ -619,6 +619,6 @@ Rules:
 - Prefer strict deserialization for both files.
 
 ## Status
-- This spec refines `docs/spec-v0.1.md`.
-- This spec complements `docs/config-manifest-spec-v0.1.md`.
+- This spec refines `specs/001-sonolog-foundation/spec.md`.
+- This spec complements `specs/002-config-manifest/spec.md`.
 - If there is a conflict specific to `analysis.json` or `run.json`, this file is authoritative.
