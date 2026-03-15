@@ -11,6 +11,11 @@ final class CliTexts {
     static final String DOCTOR_USAGE = "Uso: sonolog doctor [--online] [--config <path>]\n";
     static final String SCAN_USAGE = "Uso: sonolog scan [--config <path>]\n";
     static final String STATUS_USAGE = "Uso: sonolog status [<dreamId>] [--failed] [--protected] [--config <path>]\n";
+    static final String TRANSCRIBE_USAGE = "Uso: sonolog transcribe <dreamId> [--force] [--config <path>]\n";
+    static final String CLEAN_USAGE = "Uso: sonolog clean <dreamId> [--force] [--config <path>]\n";
+    static final String ANALYZE_USAGE = "Uso: sonolog analyze <dreamId> [--force] [--config <path>]\n";
+    static final String BUILD_NOTE_USAGE = "Uso: sonolog build-note <dreamId> [--force] [--config <path>]\n";
+    static final String PROCESS_USAGE = "Uso: sonolog process <dreamId> [--config <path>]\n";
     static String versionOutput(ApplicationMetadata metadata) {
         return metadata.displayName() + " " + metadata.version() + "\n";
     }
@@ -68,6 +73,15 @@ Seguridad:
     static final String STATUS_FAILED = "No se pudo ejecutar status.\n";
     static final String UNKNOWN_DREAM = "Dream no encontrado.\n";
     static final String NO_STATUS_ITEMS = "Sin items.\n";
+    static final String TRANSCRIBE_FAILED = "No se pudo ejecutar transcribe.\n";
+    static final String EMPTY_TRANSCRIPT = "La transcripcion esta vacia o es invalida.\n";
+    static final String CLEAN_FAILED = "No se pudo ejecutar clean.\n";
+    static final String INVALID_CLEAN_OUTPUT = "La salida de clean es invalida.\n";
+    static final String ANALYZE_FAILED = "No se pudo ejecutar analyze.\n";
+    static final String INVALID_ANALYSIS_OUTPUT = "La salida de analyze es invalida.\n";
+    static final String BUILD_NOTE_FAILED = "No se pudo ejecutar build-note.\n";
+    static final String NOTE_OVERWRITE_PROTECTED = "note_overwrite_protected\n";
+    static final String PROCESS_FAILED = "No se pudo ejecutar process.\n";
 
     private CliTexts() {
     }

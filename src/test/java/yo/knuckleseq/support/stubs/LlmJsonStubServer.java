@@ -118,10 +118,7 @@ public final class LlmJsonStubServer implements AutoCloseable {
     }
 
     public static String analysisJsonWithoutEvidence(String dreamId) {
-        return successfulAnalysisJson(dreamId).replace(
-            "\"evidence\": [\n                  {\n                    \"text\": \"doctor excentrico\",\n                    \"source\": \"cleaned\",\n                    \"segmentIds\": [1]\n                  }\n                ]",
-            "\"evidence\": []"
-        );
+        return successfulAnalysisJson(dreamId).replaceFirst("(?s)\"evidence\": \\[.*?\\]", "\"evidence\": []");
     }
 
     public static String analysisJsonWithUnsupportedValues(String dreamId) {
@@ -131,10 +128,7 @@ public final class LlmJsonStubServer implements AutoCloseable {
     }
 
     public static String analysisJsonWithoutTitleEvidence(String dreamId) {
-        return successfulAnalysisJson(dreamId).replace(
-            "\"evidence\": [\n                  {\n                    \"text\": \"doctor excentrico\",\n                    \"source\": \"cleaned\",\n                    \"segmentIds\": [1]\n                  }\n                ]",
-            "\"evidence\": []"
-        );
+        return successfulAnalysisJson(dreamId).replaceFirst("(?s)\"evidence\": \\[.*?\\]", "\"evidence\": []");
     }
 
     public static String analysisJsonWithHallucination(String dreamId) {

@@ -1,6 +1,7 @@
 package yo.knuckleseq;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
@@ -13,6 +14,15 @@ final class HashingSupport {
         try {
             var digest = MessageDigest.getInstance("SHA-256");
             return "sha256:" + hex(digest.digest(Files.readAllBytes(path)));
+        } catch (NoSuchAlgorithmException exception) {
+            throw new IllegalStateException(exception);
+        }
+    }
+
+    static String sha256(String value) {
+        try {
+            var digest = MessageDigest.getInstance("SHA-256");
+            return "sha256:" + hex(digest.digest(value.getBytes(StandardCharsets.UTF_8)));
         } catch (NoSuchAlgorithmException exception) {
             throw new IllegalStateException(exception);
         }

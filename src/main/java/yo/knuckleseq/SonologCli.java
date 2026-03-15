@@ -9,6 +9,11 @@ final class SonologCli {
     private final DoctorCommand doctorCommand = new DoctorCommand();
     private final ScanCommand scanCommand = new ScanCommand();
     private final StatusCommand statusCommand = new StatusCommand();
+    private final TranscribeCommand transcribeCommand = new TranscribeCommand();
+    private final CleanCommand cleanCommand = new CleanCommand();
+    private final AnalyzeCommand analyzeCommand = new AnalyzeCommand();
+    private final BuildNoteCommand buildNoteCommand = new BuildNoteCommand();
+    private final ProcessCommand processCommand = new ProcessCommand();
     private final List<String> arguments;
     private final ApplicationMetadata metadata;
 
@@ -42,6 +47,11 @@ final class SonologCli {
             case "doctor" -> doctorCommand.execute(commandArguments);
             case "scan" -> scanCommand.execute(commandArguments);
             case "status" -> statusCommand.execute(commandArguments);
+            case "transcribe" -> transcribeCommand.execute(commandArguments);
+            case "clean" -> cleanCommand.execute(commandArguments);
+            case "analyze" -> analyzeCommand.execute(commandArguments);
+            case "build-note" -> buildNoteCommand.execute(commandArguments);
+            case "process" -> processCommand.execute(commandArguments);
             default -> CommandResult.usageError(CliTexts.GENERAL_USAGE);
         };
     }

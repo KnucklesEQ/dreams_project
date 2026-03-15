@@ -5,6 +5,7 @@ plugins {
 
 version = '0.0.1'
 description = 'CLI for turning recorded dream audio into structured Markdown notes.'
+ext.appDisplayName = 'Sonolog'
 
 java {
     toolchain {
@@ -21,12 +22,25 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testImplementation 'org.mockito:mockito-core:5.14.2'
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.named('processResources') {
+    inputs.property('appDisplayName', appDisplayName)
+    inputs.property('appVersion', version)
+
+    filesMatching('yo/knuckleseq/build-info.properties') {
+        expand(
+            appDisplayName: appDisplayName,
+            appVersion: version
+        )
+    }
 }
 
 tasks.named('test') {
